@@ -8,14 +8,14 @@ import java.util.Random;
 
 public class ArrayGenerator {
 
-    public SortingDemo.TestScenario generateArray(int size, int min, int max, String type) {
-        if ("random".equals(type)) {
+    public SortingDemo.TestScenario generateArray(int size, int min, int max, Scenario scenario) {
+        if ("random".equals(scenario)) {
             return new SortingDemo.TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
-        } else if ("first25pctSorted".equals(type)) {
+        } else if ("first25pctSorted".equals(scenario)) {
             return new SortingDemo.TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
-        } else if ("first50pctSorted".equals(type)) {
+        } else if ("first50pctSorted".equals(scenario)) {
             return new SortingDemo.TestScenario(generateFirst50pctSortedArray(size, min, max), Scenario.SORTED50);
-        } else if ("first75pctSorted".equals(type)) {
+        } else if ("first75pctSorted".equals(scenario)) {
             return new SortingDemo.TestScenario(generateFirst75pctSortedArray(size, min, max), Scenario.SORTED75);
         }
 
@@ -31,6 +31,14 @@ public class ArrayGenerator {
         }
         return array;
     }
+
+//    private int[] generateAscendingRandomArray(int size, int min, int max) {
+//
+//    }
+//
+//    private int[] generateDescendingRandomArray(int size, int min, int max) {
+//
+//    }
 
     private int[] generateFirst25pctSortedArray(int size, int min, int max) {
         int[] array = generateRandomArray(size, min, max);
