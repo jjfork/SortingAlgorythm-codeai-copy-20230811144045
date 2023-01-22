@@ -1,4 +1,4 @@
-package service;
+package dataGeneration;
 
 import com.jakubiak.runner.SortingDemo;
 import com.jakubiak.scenerios.Scenario;
@@ -9,19 +9,33 @@ import java.util.Random;
 public class ArrayGenerator {
 
     public SortingDemo.TestScenario generateArray(int size, int min, int max, Scenario scenario) {
-        if ("random".equals(scenario)) {
-            return new SortingDemo.TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
-        } else if ("first25pctSorted".equals(scenario)) {
-            return new SortingDemo.TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
-        } else if ("first50pctSorted".equals(scenario)) {
-            return new SortingDemo.TestScenario(generateFirst50pctSortedArray(size, min, max), Scenario.SORTED50);
-        } else if ("first75pctSorted".equals(scenario)) {
-            return new SortingDemo.TestScenario(generateFirst75pctSortedArray(size, min, max), Scenario.SORTED75);
-        }
 
-        //przepisz na switchcase
-        return new SortingDemo.TestScenario(null, null);
+        return switch (scenario) {
+            case RANDOM ->
+                new SortingDemo.TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
+//
+//            case ASCENDING:
+//                System.out.println("Fridays are better.");
+//
+//
+//            case DESCENDING:
+//                System.out.println("Weekends are best.");
+//                break;
+//
+            case SORTED25 ->
+                new SortingDemo.TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
+
+
+            case SORTED50 ->
+                new SortingDemo.TestScenario(generateFirst50pctSortedArray(size, min, max), Scenario.SORTED50);
+
+            default ->
+                new SortingDemo.TestScenario(generateFirst75pctSortedArray(size, min, max), Scenario.SORTED75);
+
+        };
     }
+
+
 
     private int[] generateRandomArray(int size, int min, int max) {
         Random rand = new Random();

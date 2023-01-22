@@ -4,9 +4,8 @@ import com.jakubiak.algorithms.HeapSort;
 import com.jakubiak.algorithms.InsertionSort;
 import com.jakubiak.algorithms.SortingAlgorithm;
 import com.jakubiak.scenerios.Scenario;
-import service.ArrayGenerator;
+import dataGeneration.ArrayGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SortingDemo {
@@ -24,10 +23,12 @@ public class SortingDemo {
 
 
             List<TestScenario> testScenarios = List.of(
-                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, "random"),
-                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, "first25pctSorted"),
-                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, "first50pctSorted"),
-                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, "first75pctSorted")
+                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, Scenario.RANDOM),
+                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, Scenario.ASCENDING),
+                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, Scenario.DESCENDING),
+                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, Scenario.SORTED25),
+                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, Scenario.SORTED50),
+                    arrayGenerator.generateArray(parameters.size, parameters.min, parameters.max, Scenario.SORTED75)
             );
 
 
@@ -44,6 +45,7 @@ public class SortingDemo {
                 long end = System.currentTimeMillis();
 
 //                System.out.println("Sorted array: " + Arrays.toString(sortedArray));
+                // tutaj se zrob tak zeby sie nazwa arraya wyswietlała
                 long elapsedTime = end - start;
                 System.out.println("Time elapsed (Millis): " + elapsedTime);
                 System.out.println();

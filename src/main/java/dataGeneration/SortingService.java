@@ -1,4 +1,4 @@
-package service;
+package dataGeneration;
 
 public class SortingService {
     public  void bubbleSort(int [] arr) {
