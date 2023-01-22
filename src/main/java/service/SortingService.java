@@ -48,7 +48,11 @@ public class SortingService {
             arr[largest] = swap;
             heapify(arr, n, largest);
         }
+    }    public void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length-1);
     }
+
+
     public void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pi = partition(arr, low, high);

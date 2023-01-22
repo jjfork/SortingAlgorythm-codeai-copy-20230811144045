@@ -1,25 +1,26 @@
 package service;
 
-import org.springframework.stereotype.Service;
+import com.jakubiak.runner.SortingDemo;
+import com.jakubiak.scenerios.Scenario;
 
 import java.util.Arrays;
 import java.util.Random;
 
-@Service
 public class ArrayGenerator {
 
-    public int[] generateArray(int size, int min, int max, String type) {
-        int[] array = new int[size];
+    public SortingDemo.TestScenario generateArray(int size, int min, int max, String type) {
         if ("random".equals(type)) {
-            array = generateRandomArray(size, min, max);
+            return new SortingDemo.TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
         } else if ("first25pctSorted".equals(type)) {
-            array = generateFirst25pctSortedArray(size, min, max);
+            return new SortingDemo.TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
         } else if ("first50pctSorted".equals(type)) {
-            array = generateFirst50pctSortedArray(size, min, max);
-        } else if ("first75%pctSorted".equals(type)) {
-            array = generateFirst75pctSortedArray(size, min, max);
+            return new SortingDemo.TestScenario(generateFirst50pctSortedArray(size, min, max), Scenario.SORTED50);
+        } else if ("first75pctSorted".equals(type)) {
+            return new SortingDemo.TestScenario(generateFirst75pctSortedArray(size, min, max), Scenario.SORTED75);
         }
-        return array;
+
+        //przepisz na switchcase
+        return new SortingDemo.TestScenario(null, null);
     }
 
     private int[] generateRandomArray(int size, int min, int max) {
@@ -45,7 +46,7 @@ public class ArrayGenerator {
 
     private int[] generateFirst75pctSortedArray(int size, int min, int max) {
         int[] array = generateRandomArray(size, min, max);
-        Arrays.sort(array, 0, size / 4 * 3) ;
+        Arrays.sort(array, 0, (size / 4)*3)  ;
         return array;
     }
 }
