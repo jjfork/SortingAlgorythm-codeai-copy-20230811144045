@@ -4,6 +4,7 @@ import com.jakubiak.algorithms.HeapSort;
 import com.jakubiak.algorithms.InsertionSort;
 import com.jakubiak.algorithms.SortingAlgorithm;
 import com.jakubiak.scenerios.Scenario;
+import com.jakubiak.scenerios.TestScenario;
 import dataGeneration.ArrayGenerator;
 
 import java.util.List;
@@ -37,10 +38,10 @@ public class SortingDemo {
             testScenarios.forEach(testScenario -> {
 
 
-                System.out.println("Scenario: " + testScenario.scenario.name());
+                System.out.println("Scenario: " + testScenario.scenario().name());
                 long start = System.currentTimeMillis();
 
-                int[] sortedArray = algorithm.sort(testScenario.arr);
+                int[] sortedArray = algorithm.sort(testScenario.arr());
 
                 long end = System.currentTimeMillis();
 
@@ -62,6 +63,5 @@ public class SortingDemo {
     record Parameters(int size, int min, int max) {
     }
 
-    public record TestScenario(int[] arr, Scenario scenario) {
-    }
+
 }

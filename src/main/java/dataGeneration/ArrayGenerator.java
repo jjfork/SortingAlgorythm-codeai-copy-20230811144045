@@ -2,17 +2,18 @@ package dataGeneration;
 
 import com.jakubiak.runner.SortingDemo;
 import com.jakubiak.scenerios.Scenario;
+import com.jakubiak.scenerios.TestScenario;
 
 import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayGenerator {
 
-    public SortingDemo.TestScenario generateArray(int size, int min, int max, Scenario scenario) {
+    public TestScenario generateArray(int size, int min, int max, Scenario scenario) {
 
         return switch (scenario) {
             case RANDOM ->
-                new SortingDemo.TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
+                new TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
 //
 //            case ASCENDING:
 //                System.out.println("Fridays are better.");
@@ -23,14 +24,14 @@ public class ArrayGenerator {
 //                break;
 //
             case SORTED25 ->
-                new SortingDemo.TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
+                new TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
 
 
             case SORTED50 ->
-                new SortingDemo.TestScenario(generateFirst50pctSortedArray(size, min, max), Scenario.SORTED50);
+                new TestScenario(generateFirst50pctSortedArray(size, min, max), Scenario.SORTED50);
 
             default ->
-                new SortingDemo.TestScenario(generateFirst75pctSortedArray(size, min, max), Scenario.SORTED75);
+                new TestScenario(generateFirst75pctSortedArray(size, min, max), Scenario.SORTED75);
 
         };
     }
