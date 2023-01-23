@@ -1,9 +1,6 @@
 package com.jakubiak.runner;
 
-import com.jakubiak.algorithms.BubbleSort;
-import com.jakubiak.algorithms.HeapSort;
-import com.jakubiak.algorithms.InsertionSort;
-import com.jakubiak.algorithms.SortingAlgorithm;
+import com.jakubiak.algorithms.*;
 import com.jakubiak.scenerios.Scenario;
 import com.jakubiak.scenerios.TestScenario;
 import dataGeneration.ArrayGenerator;
@@ -15,12 +12,13 @@ public class SortingDemo {
 
     public static void main(String[] args) {
 
-        var parameters = new Parameters(100000, 1, 100000);
+        var parameters = new Parameters(1000, 1, 1000);
         var arrayGenerator = new ArrayGenerator();
         List<SortingAlgorithm> algorithms = List.of(
                 new HeapSort(),
                 new InsertionSort(),
-                new BubbleSort()
+                new BubbleSort(),
+                new QuickSort()
         );
 
         algorithms.forEach(algorithm -> {
@@ -48,7 +46,7 @@ public class SortingDemo {
 
                 long end = System.currentTimeMillis();
 
-//                System.out.println("Sorted array: " + Arrays.toString(sortedArray));
+                System.out.println("Sorted array: " + Arrays.toString(sortedArray));
                 // tutaj se zrob tak zeby sie nazwa arraya wyswietlała
                 long elapsedTime = end - start;
                 System.out.println("Time elapsed (Millis): " + elapsedTime);
@@ -63,7 +61,7 @@ public class SortingDemo {
 
     }
 
-    record Parameters(int size, int min, int max) {
+    public record Parameters(int size, int min, int max) {
     }
 
 
