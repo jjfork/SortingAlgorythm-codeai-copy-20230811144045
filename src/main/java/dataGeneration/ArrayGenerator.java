@@ -5,7 +5,9 @@ import com.jakubiak.scenerios.Scenario;
 import com.jakubiak.scenerios.TestScenario;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ArrayGenerator {
 
@@ -14,15 +16,14 @@ public class ArrayGenerator {
         return switch (scenario) {
             case RANDOM ->
                 new TestScenario(generateRandomArray(size, min, max), Scenario.RANDOM);
-//
-//            case ASCENDING:
-//                System.out.println("Fridays are better.");
-//
-//
-//            case DESCENDING:
-//                System.out.println("Weekends are best.");
-//                break;
-//
+
+            case ASCENDING ->
+                new TestScenario(generateAscendingRandomArray(size, min, max), Scenario.ASCENDING);
+
+
+            case DESCENDING ->
+                new TestScenario(generateDescendingArray(size, min, max), Scenario.DESCENDING);
+
             case SORTED25 ->
                 new TestScenario(generateFirst25pctSortedArray(size, min, max), Scenario.SORTED25);
 
@@ -47,13 +48,23 @@ public class ArrayGenerator {
         return array;
     }
 
-//    private int[] generateAscendingRandomArray(int size, int min, int max) {
-//
-//    }
-//
-//    private int[] generateDescendingRandomArray(int size, int min, int max) {
-//
-//    }
+    private int[] generateAscendingRandomArray(int size, int min, int max) {
+        return ThreadLocalRandom.current().ints(min, max)   // Stream of random ints
+                .limit(size)                               // Limit the stream to n values
+                .boxed()                                // Convert to Stream of Integer Objects for reverse sorting
+                .mapToInt(Integer::intValue)            // Map back to primitive ints
+                .toArray();                             // as Array
+    }
+
+
+    public static int[] generateDescendingArray(int size, int min, int max) {
+            return ThreadLocalRandom.current().ints(min, max)   // Stream of random ints
+                    .limit(size)                               // Limit the stream to n values
+                    .boxed()                                // Convert to Stream of Integer Objects for reverse sorting
+                    .sorted(Collections.reverseOrder())     // Sort in reverse Order
+                    .mapToInt(Integer::intValue)            // Map back to primitive ints
+                    .toArray();                             // as Array
+        }
 
     private int[] generateFirst25pctSortedArray(int size, int min, int max) {
         int[] array = generateRandomArray(size, min, max);

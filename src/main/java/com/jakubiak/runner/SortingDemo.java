@@ -1,5 +1,6 @@
 package com.jakubiak.runner;
 
+import com.jakubiak.algorithms.BubbleSort;
 import com.jakubiak.algorithms.HeapSort;
 import com.jakubiak.algorithms.InsertionSort;
 import com.jakubiak.algorithms.SortingAlgorithm;
@@ -7,17 +8,19 @@ import com.jakubiak.scenerios.Scenario;
 import com.jakubiak.scenerios.TestScenario;
 import dataGeneration.ArrayGenerator;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SortingDemo {
 
     public static void main(String[] args) {
 
-        var parameters = new Parameters(10000, 1, 10000);
+        var parameters = new Parameters(100000, 1, 100000);
         var arrayGenerator = new ArrayGenerator();
         List<SortingAlgorithm> algorithms = List.of(
                 new HeapSort(),
-                new InsertionSort()
+                new InsertionSort(),
+                new BubbleSort()
         );
 
         algorithms.forEach(algorithm -> {
