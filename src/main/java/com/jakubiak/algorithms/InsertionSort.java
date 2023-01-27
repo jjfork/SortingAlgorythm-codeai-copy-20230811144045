@@ -1,6 +1,6 @@
 package com.jakubiak.algorithms;
 
-public class InsertionSort implements SortingAlgorithm{
+public class InsertionSort implements SortingAlgorithm {
     @Override
     public int[] sort(int[] arr) {
 

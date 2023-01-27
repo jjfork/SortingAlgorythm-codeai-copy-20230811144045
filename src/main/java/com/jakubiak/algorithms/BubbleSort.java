@@ -17,5 +17,7 @@ public class BubbleSort implements SortingAlgorithm {
     }
 
     @Override
-    public String getAlgorithmName() {return BubbleSort.class.getName(); }
+    public String getAlgorithmName() {
+        return BubbleSort.class.getName();
+    }
 }

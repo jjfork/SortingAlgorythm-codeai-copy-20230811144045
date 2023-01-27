@@ -5,14 +5,13 @@ import com.jakubiak.scenerios.Scenario;
 import com.jakubiak.scenerios.TestScenario;
 import dataGeneration.ArrayGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SortingDemo {
 
     public static void main(String[] args) {
 
-        var parameters = new Parameters(1000, 1, 1000);
+        var parameters = new Parameters(1_000_000, 1, 9999999);
         var arrayGenerator = new ArrayGenerator();
         List<SortingAlgorithm> algorithms = List.of(
                 new HeapSort(),
@@ -46,8 +45,7 @@ public class SortingDemo {
 
                 long end = System.currentTimeMillis();
 
-                System.out.println("Sorted array: " + Arrays.toString(sortedArray));
-                // tutaj se zrob tak zeby sie nazwa arraya wyswietlała
+
                 long elapsedTime = end - start;
                 System.out.println("Time elapsed (Millis): " + elapsedTime);
                 System.out.println();
