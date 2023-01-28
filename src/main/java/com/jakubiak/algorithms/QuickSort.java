@@ -5,21 +5,21 @@ import java.util.Stack;
 public class QuickSort implements SortingAlgorithm {
 
     private static int partition(int[] input, int position, int start, int end) {
-        int l = start;
-        int h = end - 2;
+        int low = start;
+        int high = end - 2;
         int piv = input[position];
         swap(input, position, end - 1);
-        while (l < h) {
-            if (input[l] < piv) {
-                l++;
-            } else if (input[h] >= piv) {
-                h--;
+        while (low < high) {
+            if (input[low] < piv) {
+                low++;
+            } else if (input[high] >= piv) {
+                high--;
             } else {
-                swap(input, l, h);
+                swap(input, low, high);
             }
         }
-        int idx = h;
-        if (input[h] < piv) {
+        int idx = high;
+        if (input[high] < piv) {
             idx++;
         }
         swap(input, end - 1, idx);
