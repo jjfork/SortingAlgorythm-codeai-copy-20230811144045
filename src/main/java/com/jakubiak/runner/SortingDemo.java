@@ -11,7 +11,7 @@ public class SortingDemo {
 
     public static void main(String[] args) {
 
-        var parameters = new Parameters(10000, 1, 10000); // creates new instance of Parameters class with size=10000, min=1, max=10000
+        var parameters = new Parameters(50000, 1, 50000); // creates new instance of Parameters class with size=10000, min=1, max=10000
         var arrayGenerator = new ArrayGenerator();                       // creates new instance of ArrayGenerator class
         System.out.println("Size of the arrays: " + parameters.size);    //print out the size of the arrays using parameters object
         List<SortingAlgorithm> algorithms = List.of(                   // creates a list of sorting algorithm objects

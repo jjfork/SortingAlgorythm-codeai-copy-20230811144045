@@ -30,7 +30,7 @@ public class HeapSort implements SortingAlgorithm {
             heapify(arr, length, largest);         // Call the "heapify" method recursively, passing in the input array, the "length" variable, and the "largest" variable
         }
     }
-    @Override                              // Indicates that this method overrides a method from a superclass
+    @Override                                                            // Indicates that this method overrides a method from a superclass
     public String getAlgorithmName() {    // Declare a public method called "getAlgorithmName" that returns a string
         return HeapSort.class.getName(); // Return the name of the class as a string
     }

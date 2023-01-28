@@ -56,6 +56,6 @@ public class QuickSort implements SortingAlgorithm {                            
 
     @Override                                  //overriding the getAlgorithmName method from the SortingAlgorithm interface
     public String getAlgorithmName() {        //
-        return InsertionSort.class.getName();//returns the name of the class as a string
+        return QuickSort.class.getName();//returns the name of the class as a string
     }
 }
